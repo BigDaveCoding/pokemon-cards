@@ -1,14 +1,14 @@
-import fetchPokeData from '../utilities/poke-api';
+import FetchPokeData from '../utilities/poke-api';
 
-function searchBar() {
+function SearchBar() {
     return (
         <>
             <form>
-                <label for="pokemon_name">Search</label>
+                <label htmlFor="pokemon_name">Search</label>
                 <input id="pokemon_name" name="pokemon_name" placeholder="search for a pokemon"></input>
             </form>
         </>
     )
 }
 
-export default searchBar
+export default SearchBar

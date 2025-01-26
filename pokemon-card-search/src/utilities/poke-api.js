@@ -1,6 +1,6 @@
 "use strict";
 
-function fetchPokeData(search) {
+function FetchPokeData(search) {
     fetch('https://pokeapi.co/api/v2/pokemon/ivysaur')
     .then(response => response.json())
     .then(data => {
@@ -9,4 +9,4 @@ function fetchPokeData(search) {
 
 }
 
-export default fetchPokeData
+export default FetchPokeData
