@@ -8,3 +8,5 @@ function fetchPokeData(search) {
     })
 
 }
+
+export default fetchPokeData
