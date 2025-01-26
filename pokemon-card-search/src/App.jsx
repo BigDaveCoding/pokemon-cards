@@ -10,8 +10,10 @@ function App() {
 
   const [pokemonData, setPokemonData] = useState(null)
 
-  const handleData = (search_name) => {
-    setPokemonData(FetchPokeData(search_name))
+  const handleData = async (search_name) => {
+    const data = await FetchPokeData(search_name)
+    setPokemonData(data)
+    console.log(data)
     }
 
   return (
