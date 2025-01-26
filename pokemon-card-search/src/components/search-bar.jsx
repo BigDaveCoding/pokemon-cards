@@ -3,15 +3,18 @@ import FetchPokeData from '../utilities/poke-api';
 function SearchBar() {
 
     const handleSearch = (e) => {
+        //prevent submit form from refreshing the page
         e.preventDefault()
+        // Get <input> tag containing user search
         const element = document.querySelector('#pokemon_name')
         console.log(element)
+        // Take value from the element
         const pokemon_name = element.value
         console.log(pokemon_name)
+        // Run FetchPokeData using pokemon_name value.
         FetchPokeData(pokemon_name)
         
     }
-
 
     return (
         <>
