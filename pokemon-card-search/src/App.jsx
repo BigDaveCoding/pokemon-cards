@@ -12,13 +12,13 @@ function App() {
 
   const handleData = (search_name) => {
     setPokemonData(FetchPokeData(search_name))
-  }
+    }
 
   return (
     <>
       {/* <h1 className="text-5xl text-red-700">hello is this working?</h1> */}
       <SearchBar onSearch={handleData} />
-      <DisplayPokemonInfo />
+      {pokemonData && <DisplayPokemonInfo />}
     </>
   )
 }
