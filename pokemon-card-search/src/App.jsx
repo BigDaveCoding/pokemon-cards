@@ -20,7 +20,7 @@ function App() {
     <>
       {/* <h1 className="text-5xl text-red-700">hello is this working?</h1> */}
       <SearchBar onSearch={handleData} />
-      {pokemonData && <DisplayPokemonInfo />}
+      {pokemonData && <DisplayPokemonInfo data={pokemonData} />}
     </>
   )
 }
