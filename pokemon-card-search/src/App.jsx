@@ -12,7 +12,6 @@ function App() {
 
   const handleData = (search_name) => {
     setPokemonData(FetchPokeData(search_name))
-    console.log(pokemonData)
   }
 
   return (
