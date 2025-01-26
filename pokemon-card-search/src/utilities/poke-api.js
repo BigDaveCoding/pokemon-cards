@@ -9,6 +9,11 @@ function FetchPokeData(search) {
             const pokemon_default_img = data.sprites.front_default
             console.log(pokemon_name)
             console.log(pokemon_default_img)
+
+            return {
+                pokemon_name,
+                pokemon_default_img
+            }
         })
 
 }
