@@ -15,11 +15,11 @@ function SearchBar({ onSearch }) {
 
     return (
         <>
-            <form onSubmit={handleSearch}>
-                <label htmlFor="pokemon_name">Search</label>
-                <input onChange={(e) => setPokemonName(e.target.value)} type="text" id="pokemon_name" name="pokemon_name" placeholder="search for a pokemon"></input>
+            <form className="flex flex-col" onSubmit={handleSearch}>
+                <label htmlFor="pokemon_name"></label>
+                <input className="border-2 p-2 m-2 rounded-lg" onChange={(e) => setPokemonName(e.target.value)} type="text" id="pokemon_name" name="pokemon_name" placeholder="search for a pokemon"></input>
 
-                <input type="submit" value="Search" className="border-2 border-green-950 p-1 bg-amber-200" ></input>
+                <input className="border-2 p-2 m-2 rounded-lg bg-amber-500" type="submit" value="Search" ></input>
             </form>
         </>
     )
