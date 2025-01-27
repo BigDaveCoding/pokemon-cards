@@ -9,13 +9,18 @@ async function FetchPokeData(search) {
     const pokemon_name = data.name
     const pokemon_default_img = data.sprites.front_default
     const pokemon_shiny_img = data.sprites.front_shiny
-    const pokemon_stats_hp = [data.stats[0].stat.name, data.stats[0].base_stat]
+    const pokemon_stats = {}
+
+    data.stats.forEach(stat => {
+        pokemon_stats[stat.stat.name] = stat.base_stat
+    });
+    console.log(pokemon_stats)
 
     return {
         pokemon_name,
         pokemon_default_img,
         pokemon_shiny_img,
-        pokemon_stats_hp
+        pokemon_stats
     }
 
 }
