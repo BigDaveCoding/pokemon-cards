@@ -1,6 +1,6 @@
 import FetchPokeData from "../utilities/poke-api"
 
-function DisplayPokemonInfo({data}) {
+function DisplayPokemonInfo({data, tcgData}) {
 
     const unpackData = (object, div_class = '', key_class = '', value_class = '') => {
         return Object.entries(object).map(([key, value]) => (
@@ -23,6 +23,8 @@ function DisplayPokemonInfo({data}) {
     return (
         <>
             <h3 className="text-center text-4xl uppercase">{data.pokemon_name} </h3>
+
+            <p>{tcgData.flavor_text}</p>
 
             <div className="grid grid-cols-2">
                 <div className="flex flex-col justify-center items-center p-2">
