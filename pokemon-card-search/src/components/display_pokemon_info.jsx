@@ -11,6 +11,15 @@ function DisplayPokemonInfo({data}) {
         ));
     }
 
+    const unpackTypeImg = (array, alt_txt = '', img_class = '') => {
+        return array.map((src, index) => (
+
+                <img key={index} className={img_class} src={src} alt={alt_txt} />
+
+        ));
+
+    }
+
     return (
         <>
             <h3 className="text-center text-4xl uppercase">{data.pokemon_name} </h3>
@@ -24,6 +33,10 @@ function DisplayPokemonInfo({data}) {
                     <img className="w-full border-2 border-amber-500/50" src={data.pokemon_shiny_img} alt="" />
                     <p className="font-bold">Shiny</p>
                 </div>
+            </div>
+
+            <div className="flex justify-evenly p-4 bg-gray-100">
+                {unpackTypeImg(data.type_img_array, "pokemon type")}
             </div>
 
             <div className="">
