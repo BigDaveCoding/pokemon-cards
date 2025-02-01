@@ -31,7 +31,7 @@ function App() {
       {/* <h1 className="text-5xl text-red-700">hello is this working?</h1> */}
       <div className="">
         <SearchBar onSearch={handleData} onTcgSearch={handleTcgData} />
-        {pokemonData && <DisplayPokemonInfo data={pokemonData} />}
+        {pokemonData && tcgPokemonData && <DisplayPokemonInfo data={pokemonData} tcgData={tcgPokemonData} />}
       </div>
     </>
   )
