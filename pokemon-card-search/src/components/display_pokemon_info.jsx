@@ -2,11 +2,11 @@ import FetchPokeData from "../utilities/poke-api"
 
 function DisplayPokemonInfo({data}) {
 
-    const unpackData = (object) => {
+    const unpackData = (object, div_class = '', key_class = '', value_class = '') => {
         return Object.entries(object).map(([key, value]) => (
-            <div className="grid grid-cols-2" key={key}>
-                <p className="font-bold" >{key}:</p>
-                <p>{value}</p>
+            <div className={div_class} key={key}>
+                <p className={key_class} >{key}:</p>
+                <p className={value_class}>{value}</p>
             </div>
         ));
     }
@@ -30,12 +30,11 @@ function DisplayPokemonInfo({data}) {
 
                 <div className="border-y-1 p-2">
                     <h4 className="text-2xl underline underline-offset-4">Base Stats</h4>
-                    {unpackData(data.pokemon_stats)}
+                    {unpackData(data.pokemon_stats, "grid grid-cols-2", "font-bold")}
                 </div>
                 <div className="p-2" >
-                    <h4 className="text-2xl underline underline-offset-4" >Abilties</h4>
-                    <p>These are the potential abilities this pokemon might have.</p>
-                    {unpackData(data.ability_description)}
+                    <h4 className="text-2xl underline underline-offset-4" >Potential Abilties</h4>
+                    {unpackData(data.ability_description, "grid-cols-1", "font-bold capitalize", "text-md")}
                 </div>
 
             </div>
