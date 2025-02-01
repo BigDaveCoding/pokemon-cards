@@ -22,9 +22,9 @@ function DisplayPokemonInfo({data, tcgData}) {
 
     return (
         <>
-            <h3 className="text-center text-4xl uppercase">{data.pokemon_name} </h3>
+            <h3 className="text-center text-6xl uppercase p-2">{data.pokemon_name} </h3>
 
-            <p>{tcgData.flavor_text}</p>
+            <p className="p-2 text-xl"><i>"{tcgData.flavor_text}"</i></p>
 
             <div className="grid grid-cols-2">
                 <div className="flex flex-col justify-center items-center p-2">
