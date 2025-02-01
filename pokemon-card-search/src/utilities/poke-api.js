@@ -11,36 +11,43 @@ async function FetchPokeData(search) {
     const pokemon_shiny_img = data.sprites.other["official-artwork"].front_shiny
     const pokemon_stats = {}
 
+    const pokemon_types = data.types
+    const type_img_array = []
+
+    console.log(pokemon_types)
+
+    for (const type of pokemon_types) {
+
+        const typeResponse = await fetch(type.type.url)
+        const typeData = await typeResponse.json()
+
+        type_img_array.push(typeData.sprites["generation-viii"]["brilliant-diamond-and-shining-pearl"].name_icon)
+        
+    }
+
     const pokemon_abilities = data.abilities
     const ability_description = {}
 
     for (const ability of pokemon_abilities) {
-        // console.log(ability);
-        // console.log(ability.ability.name);
-        // console.log(ability.ability.url);
-
         const abilityResponse = await fetch(ability.ability.url);
         const abilityData = await abilityResponse.json();
-
-        // console.log(abilityData);  // Log the ability data
 
         ability_description[ability.ability.name] = abilityData.effect_entries["1"].effect
     }
 
-    // console.log(`abilities: ${pokemon_abilities}`)
     console.log(ability_description)
 
     data.stats.forEach(stat => {
         pokemon_stats[stat.stat.name] = stat.base_stat
     });
-    // console.log(pokemon_stats)
 
     return {
         pokemon_name,
         pokemon_default_img,
         pokemon_shiny_img,
         pokemon_stats,
-        ability_description
+        ability_description,
+        type_img_array
     }
 
 }
