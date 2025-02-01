@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import FetchPokeData from '../utilities/poke-api';
 
-function SearchBar({ onSearch }) {
+function SearchBar({ onSearch, onTcgSearch }) {
 
     const [pokemonName, setPokemonName] = useState('');
 
@@ -10,6 +10,7 @@ function SearchBar({ onSearch }) {
         e.preventDefault()
         // Run function passed from parent using variable pokemonName
         onSearch(pokemonName)
+        onTcgSearch(pokemonName)
           
     }
 
