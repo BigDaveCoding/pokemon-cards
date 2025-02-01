@@ -29,11 +29,11 @@ function DisplayPokemonInfo({data}) {
             <div className="">
 
                 <div className="border-y-1 p-2">
-                    <h4 className="text-2xl underline underline-offset-4">Base Stats</h4>
+                    <h4 className="text-2xl underline underline-offset-4 pb-2">Base Stats</h4>
                     {unpackData(data.pokemon_stats, "grid grid-cols-2", "font-bold")}
                 </div>
                 <div className="p-2" >
-                    <h4 className="text-2xl underline underline-offset-4" >Potential Abilties</h4>
+                    <h4 className="text-2xl underline underline-offset-4 pb-2" >Potential Abilties</h4>
                     {unpackData(data.ability_description, "grid-cols-1", "font-bold capitalize", "text-md")}
                 </div>
 
