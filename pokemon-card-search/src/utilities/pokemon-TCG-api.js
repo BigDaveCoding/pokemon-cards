@@ -13,7 +13,19 @@ async function getPokemonTCGData(query) {
     })
 
     const first_card = sorted_cards[0]
-    const flavor_text = first_card.flavorText
+    let flavor_text = ""
+
+    for (const card of sorted_cards) {
+        console.log(card.flavorText)
+        if (card.flavorText === undefined) {
+            console.log("empty flavor text")
+        } else {
+            console.log("flovor text exists")
+            flavor_text = card.flavorText
+            break;
+        }
+    }
+    
 
     console.log("first card", first_card)
     console.log(flavor_text)
