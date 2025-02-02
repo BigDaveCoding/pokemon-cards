@@ -4,8 +4,16 @@ async function FetchPokeData(search) {
     let response;
     let data;
 
+    let new_search = ''
+
+    if (search.includes(' ')) {
+        new_search = search.replace(/ /g, '-')
+    } else {
+        new_search = search
+    }
+
     try {
-        response = await fetch(`https://pokeapi.co/api/v2/pokemon/${search}`);
+        response = await fetch(`https://pokeapi.co/api/v2/pokemon/${new_search}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.statusText}`);
         }
