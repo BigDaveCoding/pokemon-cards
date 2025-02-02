@@ -4,6 +4,8 @@ async function getPokemonTCGData(query) {
     const response = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${query}`)
     const data = await response.json()
 
+    console.log("arguemnt into tcg data:", query)
+
     const all_cards = data.data
     const sorted_cards = all_cards.sort((cardA, cardB) => {
         const dateA = cardA.set.releaseDate ? new Date(cardA.set.releaseDate) : new Date(0); 
@@ -40,18 +42,18 @@ async function getPokemonTCGData(query) {
         if (first_card.evolvesFrom){
             console.log("pokemon is final evolution and evolves from... THIS ONE")
             evolves_to_array.push(first_card.evolvesFrom)
-            evolves_to_array.push(first_card.name.split(' ')[0])
+            evolves_to_array.push(query)
 
             evolves_to_array.unshift(await getEvolutionFromFrom(evolves_to_array[0])) 
             
 
         } else {
-            evolves_to_array.push(first_card.name.split(' ')[0])
+            evolves_to_array.push(query)
         }
     } // multiple evolutions like eevee
     else if (first_card.evolvesTo && first_card.evolvesTo.length > 1) {
         console.log("pokemon has multiple evolutions")
-        evolves_to_array.push(first_card.name.split(' ')[0])
+        evolves_to_array.push(query)
         first_card.evolvesTo.forEach(evolution => {
             evolves_to_array.push(evolution)
         })
@@ -59,12 +61,12 @@ async function getPokemonTCGData(query) {
     else if (first_card.evolvesTo && first_card.evolvesFrom) {
         console.log("middleEvolution")
         evolves_to_array.push(first_card.evolvesFrom)
-        evolves_to_array.push(first_card.name.split(' ')[0])
+        evolves_to_array.push(query)
         evolves_to_array.push(first_card.evolvesTo[0])
     } //first evolution
     else if (!first_card.evolvesFrom && first_card.evolvesTo) {
         console.log("pokemon is first evolution and evolves into something")
-        evolves_to_array.push(first_card.name.split(' ')[0])
+        evolves_to_array.push(query)
         evolves_to_array.push(first_card.evolvesTo[0])
 
         console.log("pokemon name for data:", evolves_to_array[1])
