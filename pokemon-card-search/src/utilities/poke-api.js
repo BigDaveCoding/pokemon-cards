@@ -1,8 +1,19 @@
 "use strict";
 
 async function FetchPokeData(search) {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${search}`);
-    const data = await response.json()
+    let response;
+    let data;
+
+    try {
+        response = await fetch(`https://pokeapi.co/api/v2/pokemon/${search}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.statusText}`);
+        }
+        data = await response.json();
+    } catch (err) {
+        console.error("Error fetching Pokémon data:", err);
+        return; // Exit early if the fetch fails
+    }
 
     console.log(data)
 
