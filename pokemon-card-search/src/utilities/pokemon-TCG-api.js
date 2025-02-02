@@ -72,15 +72,15 @@ async function getPokemonTCGData(query) {
 
 
     }
-    else if (!first_card.evolvesTo && first_card.evolvesFrom) {
-        console.log("pokemon is final evolution and evolves from...")
-        evolves_to_array.push(first_card.name)
-        evolves_to_array.push(first_card.evolvesFrom[0])
-    }
-    else if (!first_card.evolvesTo && !first_card.evolvesFrom) {
-        console.log("pokemon has no evolutions")
-        evolves_to_array.push(first_card.name)
-    }
+    // else if (!first_card.evolvesTo && first_card.evolvesFrom) {
+    //     console.log("pokemon is final evolution and evolves from...")
+    //     evolves_to_array.push(first_card.name)
+    //     evolves_to_array.push(first_card.evolvesFrom[0])
+    // }
+    // else if (!first_card.evolvesTo && !first_card.evolvesFrom) {
+    //     console.log("pokemon has no evolutions")
+    //     evolves_to_array.push(first_card.name)
+    // }
     
 
 
@@ -123,7 +123,8 @@ async function getPokemonTCGData(query) {
     // }
 
     console.log("evolves to array:", evolves_to_array)
-
+    evolves_to_array = evolves_to_array.filter(item => item !== null)
+    console.log("filtered array:", evolves_to_array)
     
     const evolves_to_img_promises = evolves_to_array.map(pokemon => getPokemonSprites(pokemon));
     evolves_to_img = await Promise.all(evolves_to_img_promises);
