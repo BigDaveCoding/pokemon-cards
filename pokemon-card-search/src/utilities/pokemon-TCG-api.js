@@ -21,6 +21,7 @@ async function getPokemonTCGData(query) {
 
     console.log(first_card.evolvesTo)
     console.log(first_card.evolvesFrom)
+    console.log("first card name = ", first_card.name.split(' ')[0])
 
     for (const card of sorted_cards) {
         // console.log(card.flavorText)
@@ -39,18 +40,18 @@ async function getPokemonTCGData(query) {
         if (first_card.evolvesFrom){
             console.log("pokemon is final evolution and evolves from... THIS ONE")
             evolves_to_array.push(first_card.evolvesFrom)
-            evolves_to_array.push(first_card.name)
+            evolves_to_array.push(first_card.name.split(' ')[0])
 
             evolves_to_array.unshift(await getEvolutionFromFrom(evolves_to_array[0])) 
             
 
         } else {
-            evolves_to_array.push(first_card.name)
+            evolves_to_array.push(first_card.name.split(' ')[0])
         }
     } // multiple evolutions like eevee
     else if (first_card.evolvesTo && first_card.evolvesTo.length > 1) {
         console.log("pokemon has multiple evolutions")
-        evolves_to_array.push(first_card.name)
+        evolves_to_array.push(first_card.name.split(' ')[0])
         first_card.evolvesTo.forEach(evolution => {
             evolves_to_array.push(evolution)
         })
@@ -58,12 +59,12 @@ async function getPokemonTCGData(query) {
     else if (first_card.evolvesTo && first_card.evolvesFrom) {
         console.log("middleEvolution")
         evolves_to_array.push(first_card.evolvesFrom)
-        evolves_to_array.push(first_card.name)
+        evolves_to_array.push(first_card.name.split(' ')[0])
         evolves_to_array.push(first_card.evolvesTo[0])
     } //first evolution
     else if (!first_card.evolvesFrom && first_card.evolvesTo) {
         console.log("pokemon is first evolution and evolves into something")
-        evolves_to_array.push(first_card.name)
+        evolves_to_array.push(first_card.name.split(' ')[0])
         evolves_to_array.push(first_card.evolvesTo[0])
 
         console.log("pokemon name for data:", evolves_to_array[1])
@@ -72,55 +73,6 @@ async function getPokemonTCGData(query) {
 
 
     }
-    // else if (!first_card.evolvesTo && first_card.evolvesFrom) {
-    //     console.log("pokemon is final evolution and evolves from...")
-    //     evolves_to_array.push(first_card.name)
-    //     evolves_to_array.push(first_card.evolvesFrom[0])
-    // }
-    // else if (!first_card.evolvesTo && !first_card.evolvesFrom) {
-    //     console.log("pokemon has no evolutions")
-    //     evolves_to_array.push(first_card.name)
-    // }
-    
-
-
-    // if (!first_card.evolvesTo) {
-    //     console.log("This card does not evolve to anything.");
-    //   } else {
-    //     evolves_to_array.push(first_card.name)
-    //     // console.log("This card evolves to:", first_card.evolvesTo);
-    //     evolves_to_array.push(first_card.evolvesTo[0])
-
-    //     const evolve = first_card.evolvesTo
-    //     // console.log("length:", evolve.length)
-
-    //     if (evolve.length <= 1) {
-
-    //         const fetchEvolveResponse = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${evolve}`)
-    //         const evolveData = await fetchEvolveResponse.json()
-    //         // console.log("evolve data:", evolveData)
-
-    //         if (!evolveData.data[0].evolvesTo ){
-
-    //             // console.log("evolution is final evolution")
-
-    //         } else {
-
-    //             // console.log("evolution has an evolution")
-
-    //             const evoEvoResponse = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${evolveData.data[0].evolvesTo[0]}`)
-    //             const evoEvoData = await evoEvoResponse.json()
-
-    //             // console.log("evolution of evolution data:", evoEvoData)
-    //             evolves_to_array.push(evolveData.data[0].evolvesTo[0])
-    //         }
-    //     } else {
-
-    //         console.log("evolution list longer than 1")
-    //     }
-        
-
-    // }
 
     console.log("evolves to array:", evolves_to_array)
     evolves_to_array = evolves_to_array.filter(item => item !== null)
