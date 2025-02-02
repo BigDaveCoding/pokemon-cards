@@ -1,10 +1,11 @@
 import FetchPokeData from "./poke-api"
 
 async function getPokemonTCGData(query) {
-    const response = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${query}`)
+    const response = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:"${query}"`)
     const data = await response.json()
 
     console.log("arguemnt into tcg data:", query)
+    console.log(data)
 
     const all_cards = data.data
     const sorted_cards = all_cards.sort((cardA, cardB) => {
@@ -23,7 +24,7 @@ async function getPokemonTCGData(query) {
 
     console.log(first_card.evolvesTo)
     console.log(first_card.evolvesFrom)
-    console.log("first card name = ", first_card.name.split(' ')[0])
+    // console.log("first card name = ", first_card.name.split(' ')[0])
 
     for (const card of sorted_cards) {
         // console.log(card.flavorText)
@@ -103,8 +104,16 @@ async function getPokemonSprites(pokemon_name) {
     if (pokemon_name === null) {
         return null
     }
+
+    let pokemon_name_space = ''
+
+    if (pokemon_name.includes(' ')){
+        pokemon_name_space = pokemon_name.replace(/ /g, '-')
+    } else {
+        pokemon_name_space = pokemon_name
+    }
     
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon_name}`)
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon_name_space}`)
     const data = await response.json()
 
 
