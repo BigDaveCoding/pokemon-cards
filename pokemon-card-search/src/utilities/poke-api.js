@@ -14,7 +14,7 @@ async function FetchPokeData(search) {
     const pokemon_types = data.types
     const type_img_array = []
 
-    console.log(pokemon_types)
+    // console.log(pokemon_types)
 
     for (const type of pokemon_types) {
 
@@ -38,12 +38,29 @@ async function FetchPokeData(search) {
             ability_description[ability.ability.name] = abilityData.effect_entries["1"].effect
         } catch(err){
             console.error("problem getting ability info")
-            ability_description["error"] = "problem getting ability info"
+        }
+
+        try{
+            const flavor_text_entries = abilityData.flavor_text_entries
+            // console.log(flavor_text_entries)
+
+            for(const entry of flavor_text_entries){
+                // console.log(entry)
+
+                if (entry.language.name == "en"){
+                    // console.error(entry.flavor_text)
+                    ability_description[ability.ability.name] = entry.flavor_text
+                    break
+                }
+
+            }
+        } catch(err){
+            console.error(err)
         }
 
     }
 
-    console.log(ability_description)
+    // console.log(ability_description)
 
     data.stats.forEach(stat => {
         pokemon_stats[stat.stat.name] = stat.base_stat
