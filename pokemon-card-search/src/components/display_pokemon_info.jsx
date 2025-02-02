@@ -20,6 +20,15 @@ function DisplayPokemonInfo({data, tcgData}) {
 
     }
 
+    const unpackEvolutionImages = (img_array) => {
+        return img_array.map((src, index) => (
+            <img className="w-40" src={src} key={index} alt='' />
+        ))
+    }
+
+    const grid_cols_length = tcgData.evolves_to_img.length
+    console.log("grid cols:", grid_cols_length)
+
     return (
         <>
             <h3 className="text-center text-6xl uppercase p-2">{data.pokemon_name} </h3>
@@ -39,6 +48,13 @@ function DisplayPokemonInfo({data, tcgData}) {
 
             <div className="flex justify-evenly p-4 bg-gray-100">
                 {unpackTypeImg(data.type_img_array, "pokemon type")}
+            </div>
+
+            <div className="p-2">
+                <h4 className="text-2xl underline underline-offset-4">Evolutions</h4>
+                <div className="flex justify-evenly">
+                    {unpackEvolutionImages(tcgData.evolves_to_img)}
+                </div>
             </div>
 
             <div className="">
