@@ -37,8 +37,13 @@ async function getPokemonTCGData(query) {
     if (first_card.evolvesTo === undefined) {
         console.log('evolve to is undefined')
         if (first_card.evolvesFrom){
+            console.log("pokemon is final evolution and evolves from... THIS ONE")
             evolves_to_array.push(first_card.evolvesFrom)
             evolves_to_array.push(first_card.name)
+
+            evolves_to_array.unshift(await getEvolutionFromFrom(evolves_to_array[0])) 
+            
+
         } else {
             evolves_to_array.push(first_card.name)
         }
@@ -147,7 +152,6 @@ async function getPokemonSprites(pokemon_name) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon_name}`)
     const data = await response.json()
 
-    
 
     console.log(data.sprites.front_default)
     return data.sprites.front_default
@@ -167,6 +171,22 @@ async function getEvolutionEvolution(pokemon_name) {
     }
 
     return data.data[0].evolvesTo[0]
+}
+
+async function getEvolutionFromFrom(pokemon_name) {
+
+    const response = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${pokemon_name}`)
+    const data = await response.json()
+
+    console.log("evolution evolution data:", data)
+    // console.log(data.data[0].evolvesTo[0])
+
+    if (!data.data[0].evolvesFrom) {
+        return null
+    }
+
+    return data.data[0].evolvesFrom
+
 }
 
 // getPokemonTCGData("charizard")
