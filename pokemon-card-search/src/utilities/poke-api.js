@@ -34,7 +34,13 @@ async function FetchPokeData(search) {
 
         console.log("ability data:", abilityData)
 
-        ability_description[ability.ability.name] = abilityData.effect_entries["1"].effect
+        try{
+            ability_description[ability.ability.name] = abilityData.effect_entries["1"].effect
+        } catch(err){
+            console.error("problem getting ability info")
+            ability_description["error"] = "problem getting ability info"
+        }
+
     }
 
     console.log(ability_description)
