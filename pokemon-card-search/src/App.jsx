@@ -6,6 +6,7 @@ import FetchPokeData from './utilities/poke-api'
 import getPokemonTCGData from './utilities/pokemon-TCG-api'
 import SearchBar from './components/search-bar'
 import DisplayPokemonInfo from './components/display_pokemon_info'
+import CreateText from './components/CreateText'
 
 function App() {
 
@@ -40,6 +41,8 @@ function App() {
         {loadingPokeDate || loadingTcgData && <p className="text-2xl p-2 text-center">Loading Data...</p>}
 
         {pokemonData && tcgPokemonData && !loadingPokeDate && !loadingTcgData && <DisplayPokemonInfo data={pokemonData} tcgData={tcgPokemonData} />}
+
+        <CreateText text="testing"/>
       </div>
     </>
   )
