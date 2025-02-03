@@ -19,7 +19,7 @@ function SearchBar({ onSearch, onTcgSearch }) {
     return (
         <>
             <form className="flex flex-col" onSubmit={handleSearch}>
-                <InputText onChange={(e) => setPokemonName(e.target.value)} className="border-2 p-2 m-2 rounded-lg" id="test_id" placeholder="test placeholder" />
+                <InputText onChange={(e) => setPokemonName(e.target.value)} className="border-2 p-2 m-2 rounded-lg" id="test_id" placeholder="Pokemon Name" />
                 <InputSubmit className="border-2 p-2 m-2 rounded-lg bg-amber-500" value="Search" />
             </form>
         </>
