@@ -6,6 +6,7 @@ import SearchBar from './components/search-bar'
 import DisplayPokemonInfo from './components/display_pokemon_info'
 import CreateText from './components/CreateText'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -36,13 +37,15 @@ function App() {
     <>
      
       {/* <h1 className="text-5xl text-red-700">hello is this working?</h1> */}
-      <div className="bg-slate-800">
-        <div className="max-w-[768px] w-full m-auto bg-slate-800 text-slate-100">
+      <div className="bg-slate-800 min-h-screen flex flex-col">
+        <div className="max-w-[768px] w-full m-auto bg-slate-800 text-slate-100 flex-grow">
           <Header />
           <SearchBar onSearch={handleData} onTcgSearch={handleTcgData} />
           {loadingPokeDate || loadingTcgData && <CreateText tag="p" className="text-center text-2xl" text="Loading Data..." />}
           {pokemonData && tcgPokemonData && !loadingPokeDate && !loadingTcgData && <DisplayPokemonInfo data={pokemonData} tcgData={tcgPokemonData} />}
+          
         </div>
+        <Footer />
       </div>
     </>
   )
