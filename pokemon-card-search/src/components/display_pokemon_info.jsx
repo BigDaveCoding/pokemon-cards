@@ -1,4 +1,5 @@
 import FetchPokeData from "../utilities/poke-api"
+import PokemonImages from "./PokemonImages";
 import PokemonTitle from "./PokemonTitle";
 
 function DisplayPokemonInfo({data, tcgData}) {
@@ -27,22 +28,12 @@ function DisplayPokemonInfo({data, tcgData}) {
         ))
     }
 
-    // const grid_cols_length = tcgData.evolves_to_img.length
-    // console.log("grid cols:", grid_cols_length)
-
     return (
         <>
             <PokemonTitle name={data.pokemon_name} text={tcgData.flavor_text} />  
-
+            
             <div className="grid grid-cols-2">
-                <div className="flex flex-col justify-center items-center p-2">
-                    <img className="w-full border-2 border-amber-500/50" src={data.pokemon_default_img} alt="" />
-                    <p className="font-bold">Standard</p>
-                </div>
-                <div className="flex flex-col justify-center items-center p-2">
-                    <img className="w-full border-2 border-amber-500/50" src={data.pokemon_shiny_img} alt="" />
-                    <p className="font-bold">Shiny</p>
-                </div>
+                <PokemonImages images={[data.pokemon_default_img, data.pokemon_shiny_img]} text={['Standard', 'Shiny']} />
             </div>
 
             <div className="flex justify-evenly p-4 bg-gray-100">
