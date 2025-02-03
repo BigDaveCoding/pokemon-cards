@@ -1,6 +1,7 @@
 import FetchPokeData from "../utilities/poke-api"
 import PokemonEvolutions from "./PokemonEvolutions";
 import PokemonImages from "./PokemonImages";
+import PokemonMoves from "./PokemonMoves";
 import PokemonTitle from "./PokemonTitle";
 
 function DisplayPokemonInfo({data, tcgData}) {
@@ -30,14 +31,14 @@ function DisplayPokemonInfo({data, tcgData}) {
                 <PokemonImages images={[data.pokemon_default_img, data.pokemon_shiny_img]} text={['Standard', 'Shiny']} />
             </div>
 
-            <div className="flex justify-evenly p-4 bg-gray-100">
+            <div className="flex justify-evenly p-4 ">
                 {unpackTypeImg(data.type_img_array, "pokemon type")}
             </div>
 
 
             <PokemonEvolutions image_src_array={tcgData.evolves_to_img} name_array={tcgData.evolves_to_array} parent_className="flex flex-wrap justfiy-evenly" image_className="w-30" />
 
-            <div className="">
+            <div className="border-b-1">
 
                 <div className="border-y-1 p-2">
                     <h4 className="text-2xl underline underline-offset-4 pb-2">Base Stats</h4>
@@ -49,6 +50,8 @@ function DisplayPokemonInfo({data, tcgData}) {
                 </div>
 
             </div>
+
+            <PokemonMoves moves={data.pokemon_moves} />
         </>
     )
 }
