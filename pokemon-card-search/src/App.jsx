@@ -34,7 +34,7 @@ function App() {
   return (
     <>
       {/* <h1 className="text-5xl text-red-700">hello is this working?</h1> */}
-      <div className="">
+      <div className="max-w-[768px] w-full m-auto">
         <SearchBar onSearch={handleData} onTcgSearch={handleTcgData} />
 
         {loadingPokeDate || loadingTcgData && <p className="text-2xl p-2 text-center">Loading Data...</p>}
