@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import FetchPokeData from '../utilities/poke-api';
 import InputText from './inputs/InputText';
+import InputSubmit from './inputs/InputSubmit';
 
 function SearchBar({ onSearch, onTcgSearch }) {
 
@@ -19,11 +20,7 @@ function SearchBar({ onSearch, onTcgSearch }) {
         <>
             <form className="flex flex-col" onSubmit={handleSearch}>
                 <InputText onChange={(e) => setPokemonName(e.target.value)} className="border-2 p-2 m-2 rounded-lg" id="test_id" placeholder="test placeholder" />
-                
-
-                <input className="border-2 p-2 m-2 rounded-lg bg-amber-500" type="submit" value="Search" ></input>
-
-                
+                <InputSubmit className="border-2 p-2 m-2 rounded-lg bg-amber-500" value="Search" />
             </form>
         </>
     )
