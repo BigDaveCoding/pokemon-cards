@@ -13,11 +13,9 @@ function DisplayPokemonInfo({data, tcgData}) {
         ));
     }
 
-    const unpackTypeImg = (array, alt_txt = '', img_class = '') => {
+    const unpackTypeImg = (array, alt_txt = 'pokemon type', img_class = '') => {
         return array.map((src, index) => (
-
-                <img key={index} className={img_class} src={src} alt={alt_txt} />
-
+            <img key={index} className={img_class} src={src} alt={alt_txt} />
         ));
 
     }
@@ -31,7 +29,7 @@ function DisplayPokemonInfo({data, tcgData}) {
     return (
         <>
             <PokemonTitle name={data.pokemon_name} text={tcgData.flavor_text} />  
-            
+
             <div className="grid grid-cols-2">
                 <PokemonImages images={[data.pokemon_default_img, data.pokemon_shiny_img]} text={['Standard', 'Shiny']} />
             </div>
