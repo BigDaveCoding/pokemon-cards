@@ -1,4 +1,5 @@
 import FetchPokeData from "../utilities/poke-api"
+import PokemonEvolutions from "./PokemonEvolutions";
 import PokemonImages from "./PokemonImages";
 import PokemonTitle from "./PokemonTitle";
 
@@ -20,11 +21,6 @@ function DisplayPokemonInfo({data, tcgData}) {
 
     }
 
-    const unpackEvolutionImages = (img_array) => {
-        return img_array.map((src, index) => (
-            <img className="w-30" src={src} key={index} alt='' />
-        ))
-    }
 
     return (
         <>
@@ -38,12 +34,8 @@ function DisplayPokemonInfo({data, tcgData}) {
                 {unpackTypeImg(data.type_img_array, "pokemon type")}
             </div>
 
-            <div className="p-2">
-                <h4 className="text-2xl underline underline-offset-4">Evolutions</h4>
-                <div className="flex flex-wrap justify-evenly">
-                    {unpackEvolutionImages(tcgData.evolves_to_img)}
-                </div>
-            </div>
+
+            <PokemonEvolutions image_src_array={tcgData.evolves_to_img} name_array={tcgData.evolves_to_array} parent_className="flex flex-wrap justfiy-evenly" image_className="w-30" />
 
             <div className="">
 
