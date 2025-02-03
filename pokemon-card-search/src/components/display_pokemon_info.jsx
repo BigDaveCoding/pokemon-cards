@@ -1,5 +1,5 @@
 import FetchPokeData from "../utilities/poke-api"
-import CreateText from "./CreateText";
+import PokemonTitle from "./PokemonTitle";
 
 function DisplayPokemonInfo({data, tcgData}) {
 
@@ -32,10 +32,7 @@ function DisplayPokemonInfo({data, tcgData}) {
 
     return (
         <>
-            <CreateText tag='h3' className="text-center text-6xl uppercase p-2" text={data.pokemon_name} />
-            <h3 className="text-center text-6xl uppercase p-2">{data.pokemon_name} </h3>
-
-            <p className="p-2 text-xl"><i>"{tcgData.flavor_text}"</i></p>
+            <PokemonTitle name={data.pokemon_name} text={tcgData.flavor_text} />  
 
             <div className="grid grid-cols-2">
                 <div className="flex flex-col justify-center items-center p-2">
