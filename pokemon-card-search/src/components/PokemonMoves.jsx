@@ -76,8 +76,8 @@ export default function PokemonMoves({moves}) {
 
     return (
         <>
-            <CreateText tag="h3" className="text-2xl underline underline-offset-4" text="Move Pool" />
-            <div className="flex justify-center space-x-4 mt-4 py-4">
+            <CreateText tag="h3" className="text-2xl underline underline-offset-4 p-2" text="Move Pool" />
+            <div className="flex justify-center space-x-4 mt-4 pb-4">
                 <button
                     onClick={handlePrevPage}
                     disabled={currentPage === 0}
