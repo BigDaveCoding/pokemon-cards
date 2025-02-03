@@ -92,7 +92,7 @@ async function getPokemonTCGData(query) {
         data,
         first_card,
         flavor_text,
-        evolves_to,
+        evolves_to_array,
         evolves_to_img
         
         
