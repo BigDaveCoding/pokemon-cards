@@ -16,7 +16,7 @@ function App() {
     setLoadingPokeData(true)
     const data = await FetchPokeData(search_name)
     setPokemonData(data)
-    console.log("poke api data: ", data)
+    // console.log("poke api data: ", data)
     setLoadingPokeData(false)
     }
 
@@ -26,7 +26,7 @@ function App() {
   const handleTcgData = async (search_name) => {
     setLoadingTcgData(true)
     const data = await getPokemonTCGData(search_name)
-    console.log("tcgApiData: ", data)
+    // console.log("tcgApiData: ", data)
     setTcgPokemonData(data)
     setLoadingTcgData(false)
   }

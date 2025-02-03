@@ -51,7 +51,7 @@ async function FetchPokeData(search) {
         const abilityResponse = await fetch(ability.ability.url);
         const abilityData = await abilityResponse.json();
 
-        console.log("ability data:", abilityData)
+        // console.log("ability data:", abilityData)
 
         try{
             ability_description[ability.ability.name] = abilityData.effect_entries["1"].effect

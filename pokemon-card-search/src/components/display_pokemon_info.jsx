@@ -26,8 +26,8 @@ function DisplayPokemonInfo({data, tcgData}) {
         ))
     }
 
-    const grid_cols_length = tcgData.evolves_to_img.length
-    console.log("grid cols:", grid_cols_length)
+    // const grid_cols_length = tcgData.evolves_to_img.length
+    // console.log("grid cols:", grid_cols_length)
 
     return (
         <>
