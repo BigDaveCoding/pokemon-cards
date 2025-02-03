@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import FetchPokeData from './utilities/poke-api'
 import getPokemonTCGData from './utilities/pokemon-TCG-api'
 import SearchBar from './components/search-bar'
 import DisplayPokemonInfo from './components/display_pokemon_info'
-import CreateText from './components/CreateText'
+
 
 function App() {
 
@@ -42,7 +40,6 @@ function App() {
 
         {pokemonData && tcgPokemonData && !loadingPokeDate && !loadingTcgData && <DisplayPokemonInfo data={pokemonData} tcgData={tcgPokemonData} />}
 
-        <CreateText text="testing"/>
       </div>
     </>
   )
