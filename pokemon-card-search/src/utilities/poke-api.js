@@ -33,6 +33,10 @@ async function FetchPokeData(search) {
     const pokemon_types = data.types
     const type_img_array = []
 
+    const pokemon_moves = data.moves
+
+    console.log("moves",pokemon_moves)
+
     // console.log(pokemon_types)
 
     for (const type of pokemon_types) {
@@ -91,7 +95,8 @@ async function FetchPokeData(search) {
         pokemon_shiny_img,
         pokemon_stats,
         ability_description,
-        type_img_array
+        type_img_array,
+        pokemon_moves
     }
 
 }
