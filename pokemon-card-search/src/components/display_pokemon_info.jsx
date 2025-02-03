@@ -1,4 +1,5 @@
 import FetchPokeData from "../utilities/poke-api"
+import Grid from "./Grid";
 import PokemonEvolutions from "./PokemonEvolutions";
 import PokemonImages from "./PokemonImages";
 import PokemonMoves from "./PokemonMoves";
@@ -27,9 +28,9 @@ function DisplayPokemonInfo({data, tcgData}) {
         <>
             <PokemonTitle name={data.pokemon_name} text={tcgData.flavor_text} />  
 
-            <div className="grid grid-cols-2">
+            <Grid className="grid grid-cols-2">
                 <PokemonImages images={[data.pokemon_default_img, data.pokemon_shiny_img]} text={['Standard', 'Shiny']} />
-            </div>
+            </Grid>
 
             <div className="flex justify-evenly p-4 ">
                 {unpackTypeImg(data.type_img_array, "pokemon type")}
