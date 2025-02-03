@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import CreateText from "./CreateText";
+import Grid from "./Grid";
 
 export default function PokemonMoves({moves}) {
 
@@ -93,23 +94,23 @@ export default function PokemonMoves({moves}) {
                     Next
                 </button>
             </div>
-            <div className="grid grid-cols-1 px-2">
+            <Grid className="grid grid-cols-1 px-2">
                 {getMovesForCurrentPage().map((move, index) => (
-                    <div className="grid grid-cols-[1fr_3fr] border-y-1 py-2 items-center" key={index}>
+                    <Grid className="grid grid-cols-[1fr_3fr] border-y-1 py-2 items-center" key={index}>
                         <div>
                             <CreateText className="border-r-1 text-yellow-400 capitalize" text={move.move.name} />
                         </div>
-                        <div className="grid grid-cols-1">
+                        <Grid className="grid grid-cols-1">
                             <CreateText className="pl-2" text={movesDescriptions[index]}  />
-                            <div className="grid grid-cols-[2fr_2fr_1fr] text-lime-200 text-sm px-2">
+                            <Grid className="grid grid-cols-[2fr_2fr_1fr] text-lime-200 text-sm px-2">
                                 <CreateText className="text-lime-200" text={`Accuracy: ${movesAccuracy[index]}`} />
                                 <CreateText text={`Power: ${movesPower[index]}`} />
                                 <CreateText text={`PP: ${movesPp[index]}`} />
-                            </div>
-                        </div>
-                    </div>
+                            </Grid>
+                        </Grid>
+                    </Grid>
                 ))}
-            </div>
+            </Grid>
             
         </>
     )
