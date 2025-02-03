@@ -6,8 +6,13 @@ export default function PokemonMoves({moves}) {
     // console.log("pokemon moves component", moves)
 
     const [currentPage, setCurrentPage] = useState(0)
-    const movesPerPage = 10
+    const movesPerPage = 5
+
+
     const [movesDescriptions, setMovesDescriptions] = useState([])
+    const [movesAccuracy, setMovesAccuracy] = useState([])
+    const [movesPower, setMovesPower] = useState([])
+    const [movesPp, setMovesPp] = useState([])
 
     const getMovesForCurrentPage = () => {
         const startIndex = currentPage * movesPerPage;
@@ -21,12 +26,19 @@ export default function PokemonMoves({moves}) {
         const fetchMoveDescriptions = async () => {
             const currentPageMoves = getMovesForCurrentPage(); // Get moves for the current page
             const descriptions = [];
+            const accuracy = []
+            const power = []
+            const pp = []
 
             for (const move of currentPageMoves) {
                 const response = await fetch(move.move.url);
                 const data = await response.json();
 
                 console.log(data)
+
+                accuracy.push(data.accuracy)
+                power.push(data.power)
+                pp.push(data.pp)
 
                 // Find the flavor text entry for Sword/Shield in English
                 for (const ft_entry of data.flavor_text_entries) {
@@ -38,6 +50,9 @@ export default function PokemonMoves({moves}) {
             }
 
             setMovesDescriptions(descriptions); // Update the state with descriptions for the current page
+            setMovesAccuracy(accuracy)
+            setMovesPower(power)
+            setMovesPp(pp)
         };
 
         if (moves.length > 0) {
@@ -64,8 +79,17 @@ export default function PokemonMoves({moves}) {
             <div className="grid grid-cols-1 px-2">
                 {getMovesForCurrentPage().map((move, index) => (
                     <div className="grid grid-cols-[1fr_3fr] border-b-1 items-center" key={index}>
-                        <CreateText className="border-r-1" text={move.move.name} />
-                        <CreateText className="pl-2" text={movesDescriptions[index]}  />
+                        <div>
+                            <CreateText className="border-r-1 text-yellow-400 capitalize" text={move.move.name} />
+                        </div>
+                        <div className="grid grid-cols-1">
+                            <CreateText className="pl-2" text={movesDescriptions[index]}  />
+                            <div className="grid grid-cols-[2fr_2fr_1fr] text-lime-200 text-sm px-2">
+                                <CreateText className="text-lime-200" text={`Accuracy: ${movesAccuracy[index]}`} />
+                                <CreateText text={`Power: ${movesPower[index]}`} />
+                                <CreateText text={`PP: ${movesPp[index]}`} />
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
