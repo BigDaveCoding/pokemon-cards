@@ -1,2 +1,3 @@
 # pokemon-cards
-Using PokeAPI to display information about pokemon cards the user searches for.
+Uses PokeAPI and PokeTCG API to fetch and display detailed information about Pokémon cards.
+Users can search for any Pokémon, and the app will display relevant data about the card, such as stats and image, based on their search query.
